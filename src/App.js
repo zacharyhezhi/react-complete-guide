@@ -28,6 +28,7 @@ class App extends Component {
         <h1>Hi, I am a react App</h1>
         <p>Hello to my money job</p>
         <button onClick = {() => this.switchNameHandlers("ZacharyHe!!")}>Swtich Name</button>
+        {/* not recommended, it will cost the performance */}
         <Person 
         name = {this.state.persons[0].name} 
         age = {this.state.persons[0].age}/>
@@ -35,6 +36,7 @@ class App extends Component {
         name = {this.state.persons[1].name} 
         age = {this.state.persons[1].age}
         click= {this.switchNameHandlers.bind(this, 'Zachary!')}>My hobby: Racing</Person>
+        {/* recommended */}
         <Person 
         name = {this.state.persons[2].name} 
         age = {this.state.persons[2].age}/>
