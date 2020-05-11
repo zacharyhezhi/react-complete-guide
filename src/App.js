@@ -5,9 +5,9 @@ import Person from './Person/Person';
 class App extends Component {
   state = {
     persons: [
-      {name : "Zachary", age : 28},
-      {name : "Max", age : 25},
-      {name : "Jeni", age : 24}
+      {id:'sdad', name : "Zachary", age : 28},
+      {id:'fsfg', name : "Max", age : 25},
+      {id:'wers', name : "Jeni", age : 24}
     ],
     otherState : 'some other value',
     showPersons : false
@@ -66,7 +66,8 @@ class App extends Component {
             return <Person
               click = {() => this.detelePersonsHandler(index)}
               name = {person.name}
-              age = {person.age}/>
+              age = {person.age}
+              key = {person.id}/>//key is for react to know which part is different and need to render
           })}
         </div>
       )
