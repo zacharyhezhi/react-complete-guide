@@ -24,14 +24,19 @@ class App extends Component {
     })
   }
 
-  nameChangeHandler = (event) => {
-    this.setState( {
-      persons: [
-        {name : 'Zachary', age : 28},
-        {name : event.target.value, age : 25},
-        {name : "Jeni", age : 25}
-      ]
-    })
+  nameChangeHandler = (event, id) => {
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.id === id;
+    });
+
+    const person = {...this.state.persons[personIndex]};
+
+    person.name = event.target.value;
+
+    const persons = [...this.state.persons]; //persons should be array, use [],not {}
+    persons[personIndex] = person;
+
+    this.setState({ persons : persons });
   }
 
   detelePersonsHandler = (personIndex) => {
@@ -39,6 +44,8 @@ class App extends Component {
     const persons = [...this.state.persons]
     persons.splice(personIndex, 1);
     this.setState({persons: persons});
+    // console.log(persons);
+
   }
 
   togglePersonsHandler = () => {
@@ -67,10 +74,11 @@ class App extends Component {
               click = {() => this.detelePersonsHandler(index)}
               name = {person.name}
               age = {person.age}
-              key = {person.id}/>//key is for react to know which part is different and need to render
+              key = {person.id}
+              changed = {(event) => this.nameChangeHandler(event, person.id)}/>
           })}
         </div>
-      )
+      );
     }
 
     return (
