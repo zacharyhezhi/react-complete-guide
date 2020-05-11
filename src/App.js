@@ -35,7 +35,8 @@ class App extends Component {
   }
 
   detelePersonsHandler = (personIndex) => {
-    const persons = this.state.persons;
+    // const persons = this.state.persons.slice(); always copy the state when mutate them
+    const persons = [...this.state.persons]
     persons.splice(personIndex, 1);
     this.setState({persons: persons});
   }
