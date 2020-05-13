@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
+import styled from 'styled-components';
 
+
+const StyledButton = styled.button`
+      background-color : green;
+      color: white;
+      font : inherit;
+      border : 1px solid blue;
+      padding : 8px;
+      cursor : pointer;
+      &:hover {
+        background-color : lightgreen;
+        color: black;
+      }
+`;
 class App extends Component {
   state = {
     persons: [
@@ -95,9 +109,8 @@ class App extends Component {
       <div className="App">
         <h1>Hi, I am a react App</h1>
         <p className = {classes.join(' ')}>Hello to my money job</p>
-        <button 
-        style = {style}
-        onClick = {this.togglePersonsHandler}>Swtich Name</button>
+        <StyledButton
+        onClick = {this.togglePersonsHandler}>Swtich Name</StyledButton>
         {/* not recommended, it will cost the performance */}
         {persons}
       </div>
